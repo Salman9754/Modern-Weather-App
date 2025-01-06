@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Nova+Mono&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --background: #131215;
+    --ofblack: #1C1C1E;
+    --purple: #B4A2E7;
+
+}
+
+* {
+    font-family: "Poppins", serif;
+}
+
+body {
+    background-color: var(--background);
+}
+
+.logo {
+    font-family: "Orbitron", serif;
+    font-weight: 600;
+}
+
+.inputItem {
+    background-color: var(--ofblack);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 18px;
+    padding: 8px 20px 8px 0px;
+}
+
+.inputField {
+    background-color: transparent;
+    border: none;
+    width: 260px;
+    color: white;
+    font-size: 14px;
+}
+
+.inputField:focus {
+    outline: none;
+    border-bottom: 1px solid rgb(95, 95, 95);
+}
+
+.location {
+    background-color: var(--purple);
+    border-radius: 18px;
+    padding: 0 15px;
+    font-size: 12px;
+    padding: 10px 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    .Current {
+        margin-right: 5px;
+    }
+}
+
+.tempCard {
+    background-color: var(--ofblack);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.separtion {
+    height: 1px;
+    background-color: #3d3d3d;
+}
+
+.tempCard p {
+    color: rgb(175, 175, 175);
+    font-size: 14px;
+}
+
+.icon {
+    color: rgb(175, 175, 175);
+}
+
+.tempCard span {
+    color: rgb(88, 88, 88);
+    font-size: 14px;
+}
+
+.para {
+    color: rgb(175, 175, 175);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+    .myNav {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {}
