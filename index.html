@@ -8,38 +8,212 @@
   <title>Home</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="myNav d-flex justify-content-between align-items-center mt-4">
-      <div class="item d-flex justify-content-center align-items-center gap-1"><img src="Assets/weather-svgrepo-com.svg"
-          alt="" width="40px" height="40px"><span class="text-light logo">Weather.pk</span></div>
+    <div class="myNav d-flex justify-content-between align-items-center mt-3">
+      <div class="item d-flex justify-content-center align-items-center gap-1 mx-2"><img
+          src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px"><span
+          class="text-light logo">Weather.pk</span></div>
       <div class="item inputItem">
         <div class="input"><span><i class="fa-solid fa-magnifying-glass text-light mx-3"></i></span><input
             class="inputField" type="text" placeholder="Enter Location"></div>
       </div>
       <div class="item locationItem d-flex justify-content-center align-items-center">
-        <button class="location"> <i class="fa-solid fa-location-crosshairs"></i> <span class="Current">Current Location</span></button>
+        <button class="location"> <i class="fa-solid fa-location-crosshairs"></i> <span class="Current">Current
+            Location</span></button>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-lg-3 col-md-4 col-sm-12 border">
+    <div class="row mt-2">
+      <div class="col-lg-3 col-md-4 col-sm-12">
         <div class="col-11 tempCard my-3 m-auto">
           <p class="m-0">Now</p>
           <div class="temp d-flex justify-content-between align-items-center">
-          <p class="m-0 fs-1 text-light"> 5<sup style="font-size: 24px;">&#176 C</sup></p>
-          <img src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px">
+            <p class="m-0 fs-1 text-light"> 5<sup style="font-size: 24px;">&#176 C</sup></p>
+            <img src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px">
           </div>
           <p class="m-0">Broken Clouds</p>
           <div class="separtion my-2"></div>
           <div class="date"><i class="fa-solid fa-calendar-days mx-1 icon"></i> <span>Monday 6,2025</span></div>
           <div class="locationName mt-1"><i class="fa-solid fa-location-dot mx-1 icon"></i> <span>Karachi</span></div>
         </div>
-        <p class="para mx-2">5 Day Forecast</p>
+        <p class="para mx-2 m-0">5 Day Forecast</p>
+        <div class="col-11 tempCard mt-2 m-auto d-flex flex-column gap-2">
+          <div class="day-1 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
+            <span>2 mar</span>
+            <span>monday</span>
+          </div>
+          <div class="day-2 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
+            <span class="span">2 mar</span>
+            <span class="span">monday</span>
+          </div>
+          <div class="day-3 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
+            <span class="span">2 mar</span>
+            <span class="span">monday</span>
+          </div>
+          <div class="day-4 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
+            <span class="span">2 mar</span>
+            <span class="span">monday</span>
+          </div>
+          <div class="day-5 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
+            <span class="span">2 mar</span>
+            <span class="span">monday</span>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-9 col-md-8 col-sm-12 border">right</div>
+      <div class="col-lg-9 col-md-8 col-sm-12">
+        <div class="main mt-3 py-2 px-4 pb-3">
+          <p class="para pt-3 m-0">Todays Highlights</p>
+          <div class="row mt-3 row-gap-3">
+            <div class="quality col-lg-6 col-md-12 col-sm-12">
+              <div class="index d-flex justify-content-between align-items-center">
+                <p class="span m-0">Air Quality Index</p>
+                <div class="label">Good</div>
+              </div>
+              <div class="quality_info d-flex gap-1 mt-4">
+                <div class="col d-flex justify-content-center align-items-center flex-column"><i
+                    class="fa-solid fa-wind para fs-3"></i></div>
+                <div class="col d-flex justify-content-center align-items-center flex-column">
+                  <p class="m-0 span">Pm2</p>
+                  <span class="para fs-3">2O3</span>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center flex-column">
+                  <p class="m-0 span">So2</p>
+                  <span class="para fs-3">2O3</span>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center flex-column">
+                  <p class="m-0 span">No2</p>
+                  <span class="para fs-3">2O3</span>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center flex-column">
+                  <p class="m-0 span">O3</p>
+                  <span class="para fs-3">2O3</span>
+                </div>
+              </div>
+
+            </div>
+            <div class="sunRise col-lg-6 col-md-12 col-sm-12">
+              <div class="index d-flex justify-content-between align-items-center">
+                <p class="span m-0">Sunrise and Sunset</p>
+              </div>
+              <div class="quality_info d-flex gap-1 mt-4">
+                <div class="col d-flex justify-content-center align-items-center gap-2">
+                  <i class="fa-regular fa-sun para fs-2"></i>
+                  <div class="left">
+                    <p class="m-0 span text-center">Sunrise</p>
+                    <span class="para fs-3">7:23 AM</span>
+                  </div>
+                </div>
+                <div class="col d-flex justify-content-center align-items-center gap-2">
+                  <i class="fa-regular fa-moon para fs-2"></i>
+                  <div class="right">
+                    <p class="m-0 span text-center">Sunset</p>
+                    <span class="para fs-3">6:30 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-3 row-gap-3">
+            <div class="combine-1 col-lg-6 col-md-12 col-sm-12 d-flex justify-content-between">
+              <div class="humidity small_data">
+                <p class="span">Humidity</p>
+                <div class="values d-flex justify-content-between align-items-center">
+                  <div class="valueIcon">
+                    <i class="fa-regular fa-moon para fs-2"></i>
+                  </div>
+                  <p class="para fs-3 m-0">60</p>
+                </div>
+              </div>
+              <div class="pressure small_data">
+                <p class="span">Pressure</p>
+                <div class="values d-flex justify-content-between align-items-center">
+                  <div class="valueIcon">
+                    <i class="fa-regular fa-moon para fs-2"></i>
+                  </div>
+                  <p class="para fs-3 m-0">1011</p>
+                </div>
+              </div>
+            </div>
+            <div class="combine-2 col-lg-6 col-md-12 col-sm-12 d-flex justify-content-between">
+              <div class="visibility small_data">
+                <p class="span">Visibility</p>
+                <div class="values d-flex justify-content-between align-items-center">
+                  <div class="valueIcon">
+                    <i class="fa-regular fa-moon para fs-2"></i>
+                  </div>
+                  <p class="para fs-3 m-0">0.4 KM</p>
+                </div>
+              </div>
+              <div class="feels_like small_data">
+                <p class="span">Feels Like</p>
+                <div class="values d-flex justify-content-between align-items-center">
+                  <div class="valueIcon">
+                    <i class="fa-regular fa-moon para fs-2"></i>
+                  </div>
+                  <p class="para fs-3 m-0">-41 C</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container mt-3">
+          <p class="para mx-2 m-0">Today at</p>
+          <div class="owl-carousel mt-3">
+            <!-- Slider Items -->
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">6 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-41 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">7 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-sun para"></i></p>
+              <p class="m-0 para">-39 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">8 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-cloud para"></i></p>
+              <p class="m-0 para">-37 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">9 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-35 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">10 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">11 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">12 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">01 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">02 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -49,6 +223,8 @@
     crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/3a83dfd1d2.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="app.js"></script>
 </body>
 

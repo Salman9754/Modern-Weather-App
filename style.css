@@ -3,12 +3,17 @@
 :root {
     --background: #131215;
     --ofblack: #1C1C1E;
+    --offblackTwo: #1A191C;
     --purple: #B4A2E7;
+    --para: #C8C8C8;
+    --grey: rgb(88, 88, 88);
+    --green: #86E389;
 
 }
 
 * {
     font-family: "Poppins", serif;
+    box-sizing: border-box;
 }
 
 body {
@@ -39,7 +44,7 @@ body {
 
 .inputField:focus {
     outline: none;
-    border-bottom: 1px solid rgb(95, 95, 95);
+    border-bottom: 0.5px solid rgb(95, 95, 95);
 }
 
 .location {
@@ -80,12 +85,94 @@ body {
 }
 
 .tempCard span {
-    color: rgb(88, 88, 88);
+    color: var(--grey);
+    font-size: 14px;
+}
+
+.span {
+    color: var(--grey);
     font-size: 14px;
 }
 
 .para {
-    color: rgb(175, 175, 175);
+    color: var(--para);
+}
+
+.main {
+    background-color: var(--ofblack);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--green);
+    padding: 3px 14px;
+    border-radius: 18px;
+    font-size: 14px;
+}
+
+.quality {
+    background-color: var(--offblackTwo);
+    border-radius: 10px;
+    padding: 20px 15px;
+
+}
+
+.sunRise {
+    background-color: var(--offblackTwo);
+    border-radius: 10px;
+    padding: 20px 15px;
+
+}
+
+.combine-1,
+.combine-2 {
+    border-radius: 10px;
+    padding: 0 !important;
+}
+
+.small_data {
+    background-color: var(--offblackTwo);
+    width: 48%;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.slider_item {
+    background-color: var(--ofblack);
+    padding: 15px 25px;
+    border-radius: 10px;
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.owl-nav button {
+    background-color: var(--offblackTwo);
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: none;
+}
+
+.owl-dots .owl-dot {
+    background-color: var(--offblackTwo);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 5px;
+    transition: all 0.3s;
+    display: none;
+}
+
+.owl-dots .owl-dot.active {
+    display: none;
 }
 
 /* Mobile */
@@ -98,3 +185,23 @@ body {
 
 /* Tablets */
 @media (min-width: 768px) and (max-width: 1023px) {}
+
+@media (min-width: 1023px) {
+    .quality {
+        width: 48%;
+        margin: auto;
+
+    }
+
+    .sunRise {
+        width: 48%;
+        margin: auto;
+
+    }
+
+    .combine-1,
+    .combine-2 {
+        width: 48%;
+        margin: auto;
+    }
+}
