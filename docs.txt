@@ -1,0 +1,38 @@
+for city api 
+  const url = 'https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=London&days=5&hour=1';
+
+for lan and log Api
+ const url = `https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=${lat},${lon}&days=5&hour=1`;
+
+const weatherIcons = {
+  "clear": "fa-sun",
+  "cloudy": "fa-cloud",
+  "snow": "fa-snowflake",
+  "rain": "fa-cloud-showers-heavy",
+  "wind": "fa-wind",
+  "fog": "fa-smog"
+};
+
+
+Clear Sky → Icon: Sun (e.g., fa-sun or a custom sun SVG).
+Few Clouds → Icon: Cloud with sun (e.g., fa-cloud-sun).
+Scattered Clouds → Icon: Cloud with partial sun (e.g., fa-cloud-sun).
+Broken Clouds → Icon: Cloud (e.g., fa-cloud).
+Shower Rain → Icon: Rain (e.g., fa-cloud-showers-heavy).
+Rain → Icon: Rain (e.g., fa-cloud-rain).
+Thunderstorm → Icon: Thunderstorm (e.g., fa-cloud-bolt).
+Snow → Icon: Snowflakes (e.g., fa-snowflake).
+Mist → Icon: Fog (e.g., fa-smog).
+Haze → Icon: Haze (e.g., custom mist or fog icon).
+
+Humidity:
+
+Icon: <i class="fa-solid fa-droplet"></i>
+Source: FontAwesome Droplet Icon
+Pressure:
+
+Icon: <i class="fa-solid fa-gauge-high"></i>
+Source: FontAwesome Gauge Icon
+Visibility:
+
+Icon: <i class="fa-solid fa-binoculars"></i>
