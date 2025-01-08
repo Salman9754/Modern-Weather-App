@@ -22,12 +22,12 @@
           class="text-light logo">Weather.pk</span></div>
       <div class="item inputItem">
         <div class="input">
-          <span class="search_icon"><i class="fa-solid fa-magnifying-glass mx-3"></i></span>
-          <input class="inputField" type="text" placeholder="Enter Location">
+          <span class="search_icon" id="search" onclick="search()"><i class="fa-solid fa-magnifying-glass mx-3"></i></span>
+          <input class="inputField" type="text" placeholder="Enter Location..." id="searchInput" autocomplete="off">
         </div>
       </div>
       <div class="item locationItem d-flex justify-content-center align-items-center">
-        <button class="location"> <i class="fa-solid fa-location-crosshairs"></i> <span class="Current">Current
+        <button class="location" id="currentLocation"><i class="fa-solid fa-location-crosshairs"></i> <span class="Current">Current
             Location</span></button>
       </div>
     </div>
