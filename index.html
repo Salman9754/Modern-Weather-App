@@ -22,12 +22,14 @@
           class="text-light logo">Weather.pk</span></div>
       <div class="item inputItem">
         <div class="input">
-          <span class="search_icon" id="search" onclick="search()"><i class="fa-solid fa-magnifying-glass mx-3"></i></span>
+          <span class="search_icon" id="search" onclick="search()"><i
+              class="fa-solid fa-magnifying-glass mx-3"></i></span>
           <input class="inputField" type="text" placeholder="Enter Location..." id="searchInput" autocomplete="off">
         </div>
       </div>
       <div class="item locationItem d-flex justify-content-center align-items-center">
-        <button class="location" id="currentLocation"><i class="fa-solid fa-location-crosshairs"></i> <span class="Current">Current
+        <button class="location" id="current"><i class="fa-solid fa-location-crosshairs"></i> <span
+            class="Current">Current
             Location</span></button>
       </div>
     </div>
@@ -36,35 +38,33 @@
         <div class="col-11 tempCard my-3 m-auto">
           <p class="m-0">Now</p>
           <div class="temp d-flex justify-content-between align-items-center">
-            <p class="m-0 fs-1 text-light">5 <sup style="font-size: 24px;">&#176C</sup></p>
-            <img src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px">
+            <p class="m-0 fs-2 text-light" id="temp">5 </p>
+            <img src="Assets/weather-svgrepo-com.svg" alt="" width="60px" height="60px" id="conditionImg">
           </div>
-          <p class="m-0">Broken Clouds</p>
+          <p class="m-0" id="condition">Broken Clouds</p>
           <div class="separtion my-2"></div>
-          <div class="date"><i class="fa-solid fa-calendar-days mx-1 icon"></i> <span>Monday 6,2025</span></div>
-          <div class="locationName mt-1"><i class="fa-solid fa-location-dot mx-1 icon"></i> <span>Karachi</span></div>
+          <div class="date"><i class="fa-solid fa-calendar-days mx-1 icon"></i> <span class="text-light" id="date">
+              2025-01-01</span>
+          </div>
+          <div class="locationName mt-1"><i class="fa-solid fa-location-dot mx-1 icon"></i> <span class="text-light"
+              id="city">Search</span></div>
         </div>
-        <p class="para mx-3 m-0">5 Day Forecast</p>
-        <div class="col-11 tempCard mt-2 m-auto d-flex flex-column gap-2">
-          <div class="day-1 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
-            <span>2 mar</span>
-            <span>monday</span>
+        <p class="para mx-3 m-0">3 Day Forecast</p>
+        <div class="col-11 tempCard mt-2 m-auto d-flex flex-column gap-4">
+          <div class="day-1 col d-flex justify-content-between align-items-center"><span><img
+                src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day1Icon"></span>
+            <span class="para date" id="date1">2 mar</span>
+            <span class="span mx-2" id="day1">Mon</span>
           </div>
-          <div class="day-2 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
-            <span class="span">2 mar</span>
-            <span class="span">monday</span>
+          <div class="day-2 col d-flex justify-content-between align-items-center"><span><img
+                src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day2Icon"></span>
+            <span class="para date" id="date2">3 mar</span>
+            <span class="span mx-2" id="day2">Tue</span>
           </div>
-          <div class="day-3 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
-            <span class="span">2 mar</span>
-            <span class="span">monday</span>
-          </div>
-          <div class="day-4 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
-            <span class="span">2 mar</span>
-            <span class="span">monday</span>
-          </div>
-          <div class="day-5 col d-flex justify-content-between"><span><i class="fa-solid fa-wind para fs-3"></i></span>
-            <span class="span">2 mar</span>
-            <span class="span">monday</span>
+          <div class="day-3 col d-flex justify-content-between align-items-center"><span><img
+                src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day3Icon"></span>
+            <span class="para date" id="date3">4 mar</span>
+            <span class="span mx-2" id="day3">Wed</span>
           </div>
         </div>
       </div>
@@ -169,6 +169,36 @@
           <div class="owl-carousel mt-2 mb-3">
             <!-- Slider Items -->
             <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">12 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-41 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">1 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-39 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">2 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-37 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">3 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-35 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">4 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">5 AM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-33 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
               <p class="m-0 para">6 AM</p>
               <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
               <p class="m-0 para">-41 °C</p>
@@ -204,15 +234,61 @@
               <p class="m-0 para">-33 °C</p>
             </div>
             <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
-              <p class="m-0 para">01 PM</p>
+              <p class="m-0 para">1 PM</p>
               <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
               <p class="m-0 para">-33 °C</p>
             </div>
             <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
-              <p class="m-0 para">02 PM</p>
+              <p class="m-0 para">2 PM</p>
               <p class="m-0 para fs-3"><i class="fa-regular fa-snowflake para"></i></p>
               <p class="m-0 para">-33 °C</p>
             </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">3 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-cloud para"></i></p>
+              <p class="m-0 para">-31 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">4 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-cloud para"></i></p>
+              <p class="m-0 para">-30 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">5 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-cloud para"></i></p>
+              <p class="m-0 para">-30 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">6 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-30 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">7 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-28 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">8 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-26 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">9 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-24 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">10 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-22 °C</p>
+            </div>
+            <div class="slider_item d-flex flex-column justify-content-center align-items-center gap-1">
+              <p class="m-0 para">11 PM</p>
+              <p class="m-0 para fs-3"><i class="fa-regular fa-moon para"></i></p>
+              <p class="m-0 para">-20 °C</p>
+            </div>
+
           </div>
         </div>
       </div>

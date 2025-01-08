@@ -5,7 +5,7 @@
     --ofblack: #1C1C1E;
     --offblackTwo: #1A191C;
     --purple: #B4A2E7;
-    --para: #C8C8C8;
+    --para: #dadada;
     --grey: rgb(88, 88, 88);
     --green: #86E389;
 
@@ -73,7 +73,7 @@ body {
 
 .tempCard {
     background-color: var(--ofblack);
-    padding: 15px;
+    padding: 25px 10px;
     border-radius: 10px;
 }
 
