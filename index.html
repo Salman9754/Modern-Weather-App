@@ -23,7 +23,7 @@
       <div class="item inputItem">
         <div class="input">
           <span class="search_icon" id="search" onclick="search()"><i
-              class="fa-solid fa-magnifying-glass mx-3"></i></span>
+              class="fa-solid fa-magnifying-glass mx-3 mt-1"></i></span>
           <input class="inputField" type="text" placeholder="Enter Location..." id="searchInput" autocomplete="off">
         </div>
       </div>
@@ -39,11 +39,11 @@
           <p class="m-0">Now</p>
           <div class="temp d-flex justify-content-between align-items-center">
             <p class="m-0 fs-2 text-light" id="temp">5 </p>
-            <img src="Assets/weather-svgrepo-com.svg" alt="" width="60px" height="60px" id="conditionImg">
+            <img src="Assets/weather-svgrepo-com.svg" alt="" width="70px" height="70px" id="conditionImg">
           </div>
           <p class="m-0" id="condition">Broken Clouds</p>
           <div class="separtion my-2"></div>
-          <div class="date"><i class="fa-solid fa-calendar-days mx-1 icon"></i> <span class="text-light" id="date">
+          <div><i class="fa-solid fa-calendar-days mx-1 icon"></i> <span class="text-light" id="date">
               2025-01-01</span>
           </div>
           <div class="locationName mt-1"><i class="fa-solid fa-location-dot mx-1 icon"></i> <span class="text-light"
@@ -51,20 +51,25 @@
         </div>
         <p class="para mx-3 m-0">3 Day Forecast</p>
         <div class="col-11 tempCard mt-2 m-auto d-flex flex-column gap-4">
+          <div class="forecastInfo px-2 col d-flex justify-content-between align-items-center">
+            <span>Status</span>
+            <span class="me-2">Date</span>
+            <span>Temp.</span>
+          </div>
           <div class="day-1 col d-flex justify-content-between align-items-center"><span><img
                 src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day1Icon"></span>
             <span class="para date" id="date1">2 mar</span>
-            <span class="span mx-2" id="day1">Mon</span>
+            <span class="span avgTemp" id="day1">Mon</span>
           </div>
           <div class="day-2 col d-flex justify-content-between align-items-center"><span><img
                 src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day2Icon"></span>
             <span class="para date" id="date2">3 mar</span>
-            <span class="span mx-2" id="day2">Tue</span>
+            <span class="span avgTemp" id="day2">Tue</span>
           </div>
           <div class="day-3 col d-flex justify-content-between align-items-center"><span><img
                 src="Assets/weather-svgrepo-com.svg" alt="" width="40px" height="40px" id="day3Icon"></span>
             <span class="para date" id="date3">4 mar</span>
-            <span class="span mx-2" id="day3">Wed</span>
+            <span class="span avgTemp" id="day3">Wed</span>
           </div>
         </div>
       </div>

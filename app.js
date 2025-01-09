@@ -50,8 +50,8 @@ async function weatherByLocation(lat, lon) {
     const response = await fetch(url);
     const responseJson = await response.json();
     showWeather(responseJson);
-    if(response.ok){
-      swal.close()
+    if (response.ok) {
+      swal.close();
     }
   } catch (error) {
     console.log(error);
@@ -81,13 +81,13 @@ async function weatherByCity(city) {
     const response = await fetch(url);
     const responseJson = await response.json();
     showWeather(responseJson);
-    if(response.ok){
-      swal.close()
+    if (response.ok) {
+      swal.close();
     }
   } catch (error) {
     console.log(error);
     myAlert("error", "Oops...", "Location not found");
-  } 
+  }
 }
 function showWeather(data) {
   console.log(data);
@@ -105,14 +105,15 @@ function showWeather(data) {
   }
   let date = document.getElementById("date");
   date.innerHTML = data.forecast.forecastday[0].date;
-
   let city = document.getElementById("city");
   city.innerHTML = data.location.name;
+  let searchInput = document.getElementById("searchInput");
+  searchInput.value = data.location.name;
   let day1 = document.getElementById("day1");
   let date1 = document.getElementById("date1");
-  let apiDate1 = data.forecast.forecastday[4].date;
+  let apiDate1 = data.forecast.forecastday[1].date;
   let dateObj = new Date(apiDate1);
-  day1.innerHTML = dateObj.toLocaleDateString("en-US", { weekday: "short" });
+  day1.innerHTML = `${data.forecast.forecastday[1].day.avgtemp_c} &#176`;
   date1.innerHTML = dateObj.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
@@ -127,7 +128,7 @@ function showWeather(data) {
   let date2 = document.getElementById("date2");
   let apiDate2 = data.forecast.forecastday[2].date;
   dateObj = new Date(apiDate2);
-  day2.innerHTML = dateObj.toLocaleDateString("en-US", { weekday: "short" });
+  day2.innerHTML = `${data.forecast.forecastday[2].day.avgtemp_c} &#176`;
   date2.innerHTML = dateObj.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",
@@ -142,7 +143,7 @@ function showWeather(data) {
   let date3 = document.getElementById("date3");
   let apiDate3 = data.forecast.forecastday[3].date;
   dateObj = new Date(apiDate3);
-  day3.innerHTML = dateObj.toLocaleDateString("en-US", { weekday: "short" });
+  day3.innerHTML = `${data.forecast.forecastday[3].day.avgtemp_c} &#176`;
   date3.innerHTML = dateObj.toLocaleDateString("en-US", {
     day: "numeric",
     month: "short",

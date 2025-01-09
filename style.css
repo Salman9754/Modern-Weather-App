@@ -104,7 +104,18 @@ body {
 .para {
     color: var(--para);
 }
-
+.date{
+    width: 43px !important;
+}
+.avgTemp{
+    margin-right: 7px;
+    width: 45px !important;
+    font-weight: 600;
+}
+.forecastInfo span{
+    font-size: 14px;
+    color: var(--para) !important;
+}
 .main {
     background-color: var(--ofblack);
     border-radius: 10px;
@@ -169,7 +180,9 @@ body {
 .owl-dots .owl-dot.active {
     display: none;
 }
-
+.swal2-popup {
+    background-color: #1C1C1E !important; 
+  }
 /* Mobile */
 @media (max-width: 767px) {
     .myNav {
