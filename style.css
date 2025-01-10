@@ -121,15 +121,19 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
-
+.index{
+    position: relative;
+}
 .label {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--green);
-    padding: 3px 14px;
+    padding: 5px 15px;
     border-radius: 18px;
     font-size: 14px;
+    position: absolute;
+    right: 0;
 }
 
 .quality {
@@ -159,6 +163,57 @@ body {
     padding: 15px;
 }
 
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+ 
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+ 
+  @keyframes backgroundChange {
+    0% {
+      background-color: transparent;
+    }
+    100% {
+      background-color: var(--ofblack);
+    }
+  }
+  
+ 
+  .background-change {
+    animation: backgroundChange 0.3s ease-in-out;
+  }
+  
+ 
+  .transition-color {
+    transition: background-color 0.5s ease-in-out;
+  }
+  
+ 
+  .label {
+    transition: background-color 0.5s ease-in-out, width 0.3s ease-in-out;
+    min-width: 120px; 
+    max-width: 200px; 
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding: 5px 15px;
+  }
+  
+ 
+  .label-transition {
+    transition: width 0.3s ease-in-out;
+  }
 .slider_item {
     background-color: var(--ofblack);
     padding: 15px 25px;
@@ -183,6 +238,7 @@ body {
 .swal2-popup {
     background-color: #1C1C1E !important; 
   }
+  
 /* Mobile */
 @media (max-width: 767px) {
     .myNav {

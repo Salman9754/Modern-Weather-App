@@ -51,7 +51,9 @@ async function weatherByLocation(lat, lon) {
     const responseJson = await response.json();
     showWeather(responseJson);
     if (response.ok) {
-      swal.close();
+      setTimeout(()=>{
+        swal.close()
+      },300)
     }
   } catch (error) {
     console.log(error);
@@ -61,15 +63,19 @@ async function weatherByLocation(lat, lon) {
 
 function search() {
   const city = document.getElementById("searchInput").value;
+  if (city.trim() === "") {
+    myAlert("info", "Oops...", "Enter Location");
+  }
   if (city) {
     document.getElementById("searchInput").blur();
-    weatherByCity(city);
+    weatherByCity(city.trim());
   }
 }
 document
   .getElementById("searchInput")
   .addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
+      event.preventDefault();
       search();
     }
   });
@@ -82,7 +88,9 @@ async function weatherByCity(city) {
     const responseJson = await response.json();
     showWeather(responseJson);
     if (response.ok) {
-      swal.close();
+      setTimeout(()=>{
+        swal.close()
+      },300)
     }
   } catch (error) {
     console.log(error);
@@ -95,6 +103,7 @@ function showWeather(data) {
   temperature.innerHTML = `${Math.round(
     data.current.temp_c
   )} <sup style="font-size: 18px;">&#176C</sup>`;
+  temperature.classList.add("fade-in");
   let condition = document.getElementById("condition");
   condition.innerHTML = data.current.condition.text;
   let conditionImg = document.getElementById("conditionImg");
@@ -103,10 +112,13 @@ function showWeather(data) {
   } else {
     conditionImg.src = data.current.condition.icon;
   }
+  conditionImg.classList.add("fade-in");
   let date = document.getElementById("date");
   date.innerHTML = data.forecast.forecastday[0].date;
+  date.classList.add("fade-in");
   let city = document.getElementById("city");
   city.innerHTML = data.location.name;
+  city.classList.add("fade-in");
   let searchInput = document.getElementById("searchInput");
   searchInput.value = data.location.name;
   let day1 = document.getElementById("day1");
@@ -154,4 +166,44 @@ function showWeather(data) {
   } else {
     day3Icon.src = data.forecast.forecastday[3].day.condition.icon;
   }
+  let sunRise = document.getElementById("sunRise");
+  sunRise.innerText = data.forecast.forecastday[0].astro.sunrise;
+  let sunSet = document.getElementById("sunSet");
+  sunSet.innerText = data.forecast.forecastday[0].astro.sunset;
+  let Pm10Value = Math.round(data.current.air_quality.pm10);
+  let Pm10 = document.getElementById("Pm10");
+  Pm10.innerText = Pm10Value;
+  let label = document.getElementById("label");
+  if (Pm10Value <= 50) {
+    label.innerHTML = "Good";
+    label.style.backgroundColor = "#86E389";
+  } else if (Pm10Value > 50 && Pm10Value <= 100) {
+    label.innerHTML = "Moderate";
+    label.style.backgroundColor = "#F0C800";
+  } else if (Pm10Value > 100 && Pm10Value <= 200) {
+    label.innerHTML = "Unhealthy";
+    label.style.backgroundColor = "#FF6F61";
+  } else if (Pm10Value > 200 && Pm10Value <= 300) {
+    label.innerHTML = "Very Unhealthy";
+    label.style.backgroundColor = "#E35D6A";
+  } else {
+    label.innerHTML = "Hazardous";
+    label.style.backgroundColor = "#D32F2F";
+  }
+  label.classList.add("background-change");
+  let So2 = document.getElementById("So2");
+  So2.innerText = Math.round(data.current.air_quality.so2);
+  let No2 = document.getElementById("No2");
+  No2.innerText = Math.round(data.current.air_quality.no2);
+  let O3 = document.getElementById("O3");
+  O3.innerText = Math.round(data.current.air_quality.o3);
+
+  let humidity = document.getElementById("humidity");
+  humidity.innerText = data.current.humidity;
+  let pressure = document.getElementById("pressure");
+  pressure.innerText = data.current.pressure_mb;
+  let visibility = document.getElementById("visibility");
+  visibility.innerText = `${data.current.vis_km} KM`;
+  let feels_like = document.getElementById("feels_like");
+  feels_like.innerHTML = `${data.current.feelslike_c} &#176;C`;
 }
