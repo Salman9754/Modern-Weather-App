@@ -104,6 +104,9 @@ body {
 .para {
     color: var(--para);
 }
+.para img{
+    width: 40px !important;
+}
 .date{
     width: 43px !important;
 }

@@ -1,18 +1,3 @@
-$(document).ready(function () {
-  $(".owl-carousel").owlCarousel({
-    items: 1,
-    margin: 10,
-    loop: true,
-    nav: true,
-    dots: true,
-    responsive: {
-      0: { items: 3 },
-      600: { items: 4 },
-      1000: { items: 8 },
-    },
-  });
-});
-
 function myAlert(icon, title, text) {
   swal.fire({
     icon: icon,
@@ -22,7 +7,22 @@ function myAlert(icon, title, text) {
     color: "#FFFFFF",
   });
 }
+// Disable right-click on the body
+//  document.body.addEventListener('contextmenu', (event) => {
+//   event.preventDefault();
+// });
 
+// Block specific key combinations, including F12
+// document.body.addEventListener('keydown', (event) => {
+// Block Ctrl+Shift+I (DevTools), Ctrl+Shift+C (Inspect Element), Ctrl+U (View Source), and F12
+//   if (
+//     (event.ctrlKey && event.shiftKey && ['I', 'C', 'J'].includes(event.key.toUpperCase())) ||
+//     (event.ctrlKey && event.key.toUpperCase() === 'U') ||
+//     event.key === 'F12'
+//   ) {
+//     event.preventDefault();
+//   }
+// });
 function currentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -50,10 +50,11 @@ async function weatherByLocation(lat, lon) {
     const response = await fetch(url);
     const responseJson = await response.json();
     showWeather(responseJson);
+    updateSliderData(responseJson);
     if (response.ok) {
-      setTimeout(()=>{
-        swal.close()
-      },300)
+      setTimeout(() => {
+        swal.close();
+      }, 300);
     }
   } catch (error) {
     console.log(error);
@@ -87,10 +88,11 @@ async function weatherByCity(city) {
     const response = await fetch(url);
     const responseJson = await response.json();
     showWeather(responseJson);
+    updateSliderData(responseJson);
     if (response.ok) {
-      setTimeout(()=>{
-        swal.close()
-      },300)
+      setTimeout(() => {
+        swal.close();
+      }, 300);
     }
   } catch (error) {
     console.log(error);
@@ -206,4 +208,123 @@ function showWeather(data) {
   visibility.innerText = `${data.current.vis_km} KM`;
   let feels_like = document.getElementById("feels_like");
   feels_like.innerHTML = `${data.current.feelslike_c} &#176;C`;
+}
+function updateSliderData(weatherData) {
+  let am12Icon = document.getElementById("12am-icon");
+  let am12Temp = document.getElementById("12am-temp");
+
+  let am1Icon = document.getElementById("1am-icon");
+  let am1Temp = document.getElementById("1am-temp");
+
+  let am2Icon = document.getElementById("2am-icon");
+  let am2Temp = document.getElementById("2am-temp");
+
+  let am3Icon = document.getElementById("3am-icon");
+  let am3Temp = document.getElementById("3am-temp");
+
+  let am4Icon = document.getElementById("4am-icon");
+  let am4Temp = document.getElementById("4am-temp");
+
+  let am5Icon = document.getElementById("5am-icon");
+  let am5Temp = document.getElementById("5am-temp");
+
+  let am6Icon = document.getElementById("6am-icon");
+  let am6Temp = document.getElementById("6am-temp");
+
+  let am7Icon = document.getElementById("7am-icon");
+  let am7Temp = document.getElementById("7am-temp");
+
+  let am8Icon = document.getElementById("8am-icon");
+  let am8Temp = document.getElementById("8am-temp");
+
+  let am9Icon = document.getElementById("9am-icon");
+  let am9Temp = document.getElementById("9am-temp");
+
+  let am10Icon = document.getElementById("10am-icon");
+  let am10Temp = document.getElementById("10am-temp");
+
+  let am11Icon = document.getElementById("11am-icon");
+  let am11Temp = document.getElementById("11am-temp");
+
+  let pm12Icon = document.getElementById("12pm-icon");
+  let pm12Temp = document.getElementById("12pm-temp");
+
+  let pm1Icon = document.getElementById("1pm-icon");
+  let pm1Temp = document.getElementById("1pm-temp");
+
+  let pm2Icon = document.getElementById("2pm-icon");
+  let pm2Temp = document.getElementById("2pm-temp");
+
+  let pm3Icon = document.getElementById("3pm-icon");
+  let pm3Temp = document.getElementById("3pm-temp");
+
+  let pm4Icon = document.getElementById("4pm-icon");
+  let pm4Temp = document.getElementById("4pm-temp");
+
+  let pm5Icon = document.getElementById("5pm-icon");
+  let pm5Temp = document.getElementById("5pm-temp");
+
+  let pm6Icon = document.getElementById("6pm-icon");
+  let pm6Temp = document.getElementById("6pm-temp");
+
+  let pm7Icon = document.getElementById("7pm-icon");
+  let pm7Temp = document.getElementById("7pm-temp");
+
+  let pm8Icon = document.getElementById("8pm-icon");
+  let pm8Temp = document.getElementById("8pm-temp");
+
+  let pm9Icon = document.getElementById("9pm-icon");
+  let pm9Temp = document.getElementById("9pm-temp");
+
+  let pm10Icon = document.getElementById("10pm-icon");
+  let pm10Temp = document.getElementById("10pm-temp");
+
+  let pm11Icon = document.getElementById("11pm-icon");
+  let pm11Temp = document.getElementById("11pm-temp");
+
+  const sliderItems = document.querySelectorAll(".slider_item");
+
+  // Iterate over the slider items
+  sliderItems.forEach((item, index) => {
+    const timeElement = item.querySelector(".para:nth-child(1)"); // Time element
+    const iconElement = item.querySelector("img"); // Weather icon
+    const tempElement = item.querySelector(".para:nth-child(3)"); // Temperature element
+
+    // Get corresponding weather data for the slider index
+    const hourData = weatherData.forecast.forecastday[0].hour[index]; // Assuming `hour` is available
+
+    if (hourData) {
+      // Determine if it's AM or PM based on the hour
+      let period = index < 12 ? "am" : "pm";
+      let hour = index % 12 === 0 ? 12 : index % 12; // Adjust for 12-hour format
+
+      // Update the time element
+      timeElement.textContent = `${hour}${period}`; // Format as hour + AM/PM
+
+      // Update the icon
+      if (hourData.condition.text.trim() === "Clear") {
+        iconElement.src = "Assets/moon-svgrepo-com.svg"; // Clear weather icon
+      } else {
+        iconElement.src = hourData.condition.icon; // Weather condition icon
+      }
+
+      // Update the temperature
+      tempElement.textContent = `${Math.round(hourData.temp_c)} °C`; // Rounded temperature
+    }
+  });
+
+  $(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+      items: 1,
+      margin: 10,
+      loop: true,
+      nav: true,
+      dots: true,
+      responsive: {
+        0: { items: 3 },
+        600: { items: 4 },
+        1000: { items: 8 },
+      },
+    });
+  });
 }
