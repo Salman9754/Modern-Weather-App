@@ -7,22 +7,6 @@ function myAlert(icon, title, text) {
     color: "#FFFFFF",
   });
 }
-// Disable right-click on the body
-//  document.body.addEventListener('contextmenu', (event) => {
-//   event.preventDefault();
-// });
-
-// Block specific key combinations, including F12
-// document.body.addEventListener('keydown', (event) => {
-// Block Ctrl+Shift+I (DevTools), Ctrl+Shift+C (Inspect Element), Ctrl+U (View Source), and F12
-//   if (
-//     (event.ctrlKey && event.shiftKey && ['I', 'C', 'J'].includes(event.key.toUpperCase())) ||
-//     (event.ctrlKey && event.key.toUpperCase() === 'U') ||
-//     event.key === 'F12'
-//   ) {
-//     event.preventDefault();
-//   }
-// });
 function currentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPosition, showError);
@@ -44,7 +28,7 @@ function showError(error) {
 }
 
 async function weatherByLocation(lat, lon) {
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=${lat},${lon}&aqi=yes&days=6`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?{Your-Api_key}&q=${lat},${lon}&aqi=yes&days=6`;
   try {
     Swal.showLoading();
     const response = await fetch(url);
@@ -82,7 +66,7 @@ document
   });
 
 async function weatherByCity(city) {
-  const url = `https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=${city}&aqi=yes&days=6`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?{Your-Api-Key}&q=${city}&aqi=yes&days=6`;
   try {
     Swal.showLoading();
     const response = await fetch(url);
@@ -210,6 +194,7 @@ function showWeather(data) {
   feels_like.innerHTML = `${data.current.feelslike_c} &#176;C`;
 }
 function updateSliderData(weatherData) {
+  $("#carousel-container").trigger("destroy.owl.carousel");
   let am12Icon = document.getElementById("12am-icon");
   let am12Temp = document.getElementById("12am-temp");
 
@@ -295,7 +280,7 @@ function updateSliderData(weatherData) {
 
     if (hourData) {
       // Determine if it's AM or PM based on the hour
-      let period = index < 12 ? "am" : "pm";
+      let period = index < 12 ? " am" : " pm";
       let hour = index % 12 === 0 ? 12 : index % 12; // Adjust for 12-hour format
 
       // Update the time element
