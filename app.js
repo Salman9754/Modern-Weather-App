@@ -11,6 +11,9 @@ function currentLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getPosition, showError);
   }
+  else {
+    myAlert("error", "Oops...", "Geolocation is not supported by this browser");
+  }
 }
 
 window.onload = currentLocation;
@@ -24,13 +27,13 @@ async function getPosition(data) {
 
 function showError(error) {
   console.log(error);
-  myAlert("error", "Oops...", "Location not found enter manually");
+  myAlert("error", "Oops...", "Geolocation is not supported by this browser");
 }
 
 async function weatherByLocation(lat, lon) {
-  const url = `https://api.weatherapi.com/v1/forecast.json?{Your-Api_key}&q=${lat},${lon}&aqi=yes&days=6`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=${lat},${lon}&aqi=yes&days=6`;
+  Swal.showLoading();
   try {
-    Swal.showLoading();
     const response = await fetch(url);
     const responseJson = await response.json();
     showWeather(responseJson);
@@ -66,7 +69,7 @@ document
   });
 
 async function weatherByCity(city) {
-  const url = `https://api.weatherapi.com/v1/forecast.json?{Your-Api-Key}&q=${city}&aqi=yes&days=6`;
+  const url = `https://api.weatherapi.com/v1/forecast.json?key=5508d1849c974c9a929165810250701&q=${city}&aqi=yes&days=6`;
   try {
     Swal.showLoading();
     const response = await fetch(url);
