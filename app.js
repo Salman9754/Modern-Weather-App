@@ -7,17 +7,64 @@ function myAlert(icon, title, text) {
     color: "#FFFFFF",
   });
 }
+let isTouched = false;
+let isProcessing = false;
+
 function currentLocation() {
+  if (isProcessing) return;
+  isProcessing = true;
+
+  // Show loader while fetching location
+  Swal.showLoading();
+
+  const geolocationTimeout = setTimeout(() => {
+    // Close loader and alert user about timeout
+    Swal.close();
+    isProcessing = false;
+    myAlert("info", "Oops...", "Geolocation permission timeout. Please retry.");
+  }, 20000); // Increased timeout to 20 seconds for mobile devices
+
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPosition, showError);
-  }
-  else {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        if (isProcessing) {
+          // Clear timeout and close loader on success
+          clearTimeout(geolocationTimeout);
+          isProcessing = false;
+          Swal.close();
+          getPosition(position);
+        }
+      },
+      (error) => {
+        if (isProcessing) {
+          // Handle error, clear timeout, and close loader
+          clearTimeout(geolocationTimeout);
+          isProcessing = false;
+          Swal.close();
+          showError(error);
+        }
+      },
+      {
+        enableHighAccuracy: true, // Ensure higher accuracy on mobile
+        timeout: 20000, // Mobile-specific geolocation timeout
+      }
+    );
+  } else {
+    // Handle case when geolocation is not supported
+    clearTimeout(geolocationTimeout);
+    Swal.close();
+    isProcessing = false;
     myAlert("error", "Oops...", "Geolocation is not supported by this browser");
   }
 }
-
-window.onload = currentLocation;
-document.getElementById("current").addEventListener("click", currentLocation);
+const currentElement = document.getElementById("current");
+if (currentElement) {
+  currentElement.addEventListener("click", (event) => {
+    isTouched = true;
+    currentLocation(event);
+  });
+}
+window.onload = currentLocation()
 
 async function getPosition(data) {
   let lat = await data.coords.latitude;
@@ -87,7 +134,6 @@ async function weatherByCity(city) {
   }
 }
 function showWeather(data) {
-  console.log(data);
   let temperature = document.getElementById("temp");
   temperature.innerHTML = `${Math.round(
     data.current.temp_c
@@ -110,50 +156,54 @@ function showWeather(data) {
   city.classList.add("fade-in");
   let searchInput = document.getElementById("searchInput");
   searchInput.value = data.location.name;
-  let day1 = document.getElementById("day1");
-  let date1 = document.getElementById("date1");
-  let apiDate1 = data.forecast.forecastday[1].date;
-  let dateObj = new Date(apiDate1);
-  day1.innerHTML = `${data.forecast.forecastday[1].day.avgtemp_c} &#176`;
-  date1.innerHTML = dateObj.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-  let day1Icon = document.getElementById("day1Icon");
-  if (data.forecast.forecastday[1].day.condition.text === "Clear") {
-    day1Icon.src = "Assets/moon-svgrepo-com.svg";
-  } else {
-    day1Icon.src = data.forecast.forecastday[1].day.condition.icon;
-  }
-  let day2 = document.getElementById("day2");
-  let date2 = document.getElementById("date2");
-  let apiDate2 = data.forecast.forecastday[2].date;
-  dateObj = new Date(apiDate2);
-  day2.innerHTML = `${data.forecast.forecastday[2].day.avgtemp_c} &#176`;
-  date2.innerHTML = dateObj.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-  let day2Icon = document.getElementById("day2Icon");
-  if (data.forecast.forecastday[2].day.condition.text === "Clear") {
-    day2Icon.src = "Assets/moon-svgrepo-com.svg";
-  } else {
-    day2Icon.src = data.forecast.forecastday[2].day.condition.icon;
-  }
-  let day3 = document.getElementById("day3");
-  let date3 = document.getElementById("date3");
-  let apiDate3 = data.forecast.forecastday[3].date;
-  dateObj = new Date(apiDate3);
-  day3.innerHTML = `${data.forecast.forecastday[3].day.avgtemp_c} &#176`;
-  date3.innerHTML = dateObj.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "short",
-  });
-  let day3Icon = document.getElementById("day3Icon");
-  if (data.forecast.forecastday[3].day.condition.text === "Clear") {
-    day3Icon.src = "Assets/moon-svgrepo-com.svg";
-  } else {
-    day3Icon.src = data.forecast.forecastday[3].day.condition.icon;
+  try {
+    let day1 = document.getElementById("day1");
+    let date1 = document.getElementById("date1");
+    let apiDate1 = data.forecast.forecastday[0].date;
+    let dateObj = new Date(apiDate1);
+    day1.innerHTML = `${data.forecast.forecastday[0].day.avgtemp_c} &#176`;
+    date1.innerHTML = dateObj.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+    });
+    let day1Icon = document.getElementById("day1Icon");
+    if (data.forecast.forecastday[0].day.condition.text === "Clear") {
+      day1Icon.src = "Assets/moon-svgrepo-com.svg";
+    } else {
+      day1Icon.src = data.forecast.forecastday[0].day.condition.icon;
+    }
+    let day2 = document.getElementById("day2");
+    let date2 = document.getElementById("date2");
+    let apiDate2 = data.forecast.forecastday[1].date;
+    dateObj = new Date(apiDate2);
+    day2.innerHTML = `${data.forecast.forecastday[1].day.avgtemp_c} &#176`;
+    date2.innerHTML = dateObj.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+    });
+    let day2Icon = document.getElementById("day2Icon");
+    if (data.forecast.forecastday[1].day.condition.text === "Clear") {
+      day2Icon.src = "Assets/moon-svgrepo-com.svg";
+    } else {
+      day2Icon.src = data.forecast.forecastday[1].day.condition.icon;
+    }
+    let day3 = document.getElementById("day3");
+    let date3 = document.getElementById("date3");
+    let apiDate3 = data.forecast.forecastday[2].date;
+    dateObj = new Date(apiDate3);
+    day3.innerHTML = `${data.forecast.forecastday[2].day.avgtemp_c} &#176`;
+    date3.innerHTML = dateObj.toLocaleDateString("en-US", {
+      day: "numeric",
+      month: "short",
+    });
+    let day3Icon = document.getElementById("day3Icon");
+    if (data.forecast.forecastday[2].day.condition.text === "Clear") {
+      day3Icon.src = "Assets/moon-svgrepo-com.svg";
+    } else {
+      day3Icon.src = data.forecast.forecastday[2].day.condition.icon;
+    }
+  } catch (error) {
+    console.log(error);
   }
   let sunRise = document.getElementById("sunRise");
   sunRise.innerText = data.forecast.forecastday[0].astro.sunrise;
